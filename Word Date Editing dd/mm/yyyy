@@ -1,0 +1,44 @@
+Sub OrdinalDate()
+Dim rg As Range
+Dim dt As Date
+Dim outStr As String
+Dim k As String
+
+If Not IsDate(Selection.Text) Then
+    MsgBox "Please select a date and try again."
+    Exit Sub
+End If
+
+Set rg = Selection.Range
+While Not IsNumeric(rg.Characters.Last)
+    rg.MoveEnd wdCharacter, -1
+Wend
+
+dt = CDate(rg.Text)
+outStr = Day(dt)
+Select Case Right(outStr, 1)
+    Case "1":
+        outStr = outStr & "/"
+    Case "2":
+        outStr = outStr & "/"
+    Case "3":
+        outStr = outStr & "/"
+    Case "4":
+        outStr = outStr & "/"
+    Case "5":
+        outStr = outStr & "/"
+    Case "6":
+        outStr = outStr & "/"
+    Case "7":
+        outStr = outStr & "/"
+    Case "8":
+        outStr = outStr & "/"
+    Case "9":
+        outStr = outStr & "/"
+    Case Else:
+        outStr = outStr & "/"
+End Select
+outStr = outStr & (Month(dt)) & "/" & Year(dt)
+
+rg.Text = outStr
+End Sub
